@@ -6,18 +6,26 @@ import ProductCart from "../components/productCart";
 import { getCart } from "../utils/cart";
 import Lottie from "react-lottie-player/dist/LottiePlayerLight";
 import emptyCart from "../assets/empty-cart.json";
+import { fCurrency } from "../utils/formatNumber";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     setCart(getCart());
-  }, []);
+    let totalPrice = [];
+    // eslint-disable-next-line array-callback-return
+    cart.map((item) => {
+      totalPrice.push(item.product.price * item.quantity);
+    });
+    setTotal(totalPrice.reduce((a, b) => a + b, 0));
+  }, [cart]);
 
   return (
     <>
       <AppBarComp />
-      <Typography sx={{ p: 2 }} variant="h4" color="primary">
+      <Typography sx={{ p: 2 }} variant="h5" color="primary">
         Keranjang Pesanan
       </Typography>
       <Box sx={{ p: 2 }}>
@@ -55,7 +63,7 @@ export default function Cart() {
           Total Harga
         </Typography>
         <Typography sx={{ p: 2 }} variant="h5" color="primary">
-          Rp. 0
+          Rp. {fCurrency(total)}
         </Typography>
       </Box>
       <Box
@@ -65,15 +73,28 @@ export default function Cart() {
           mt: 2,
         }}
       >
-        <Button
-          sx={{
-            width: "50%",
-          }}
-          variant="contained"
-          color="primary"
-        >
-          Pesan
-        </Button>
+        {cart.length > 0 ? (
+          <Button
+            sx={{
+              width: "50%",
+            }}
+            variant="contained"
+            color="primary"
+          >
+            Pesan
+          </Button>
+        ) : (
+          <Button
+            sx={{
+              width: "50%",
+            }}
+            variant="contained"
+            color="primary"
+            disabled
+          >
+            Pesan
+          </Button>
+        )}
       </Box>
       <Copyright />
     </>

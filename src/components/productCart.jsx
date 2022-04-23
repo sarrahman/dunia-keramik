@@ -8,8 +8,16 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Avatar } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { fCurrency } from "../utils/formatNumber";
+import { deleteCart, updateCart } from "../utils/cart";
 
 export default function ProductCart(props) {
+  const [qty, setQty] = React.useState(0);
+
+  React.useEffect(() => {
+    setQty(props.item.quantity);
+  }, [props.item.quantity]);
+
   return (
     <Card sx={{ display: "flex", boxShadow: "2px 2px 10px #999" }}>
       <Box
@@ -33,8 +41,12 @@ export default function ProductCart(props) {
           }}
         >
           <Typography variant="h6">{props.item.product.name}</Typography>
-          <Typography variant="subtitle1" color="#555">{props.item.product.brand}</Typography>
-          <Typography variant="h6">Rp. {props.item.product.price}</Typography>
+          <Typography variant="subtitle1" color="#555">
+            {props.item.product.brand}
+          </Typography>
+          <Typography variant="h6">
+            Rp. {fCurrency(props.item.quantity * props.item.product.price)}
+          </Typography>
         </CardContent>
         <Box
           sx={{
@@ -55,7 +67,12 @@ export default function ProductCart(props) {
                 display: "flex",
               }}
             >
-              <IconButton>
+              <IconButton
+                onClick={() => {
+                  setQty(qty + 1);
+                  updateCart(props.item.product._id, qty + 1);
+                }}
+              >
                 <AddIcon color="secondary" />
               </IconButton>
               <Typography
@@ -63,13 +80,27 @@ export default function ProductCart(props) {
                   fontSize: "1.3rem",
                 }}
               >
-                {props.item.quantity}
+                {qty}
               </Typography>
-              <IconButton>
+              <IconButton
+                onClick={() => {
+                  if (qty > 0) {
+                    setQty(qty - 1);
+                    updateCart(props.item.product._id, qty - 1);
+                  }else{
+                    deleteCart(props.item.product._id);
+                  }
+                }}
+              >
                 <RemoveIcon color="secondary" />
               </IconButton>
             </Box>
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                deleteCart(props.item.product._id);
+                window.location.reload();
+              }}
+            >
               <DeleteIcon color="secondary" />
             </IconButton>
           </Box>

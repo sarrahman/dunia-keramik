@@ -21,12 +21,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { insertData } from "../utils/cart";
 import SnackNotif from "../components/snacknotif";
+import { fCurrency } from "../utils/formatNumber";
 
 function Product(props) {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState({
+    open: false,
+    message: "",
+    status: "success",
+  });
 
   useEffect(() => {
     props
@@ -81,7 +86,7 @@ function Product(props) {
                 variant="h6"
                 color="primary"
               >
-                Rp. {product.price}
+                Rp. {fCurrency(product.price)}
               </Typography>
               <List>
                 <ListItem disablePadding>
@@ -140,8 +145,23 @@ function Product(props) {
                   variant="contained"
                   color="primary"
                   onClick={() => {
-                    insertData({ id, quantity, product });
-                    setOpen(true);
+                    if (quantity > 0) {
+                      insertData({ product, quantity });
+                      setValue({
+                        open: true,
+                        message: "Produk berhasil ditambahkan ke keranjang",
+                        status: "success",
+                      });
+                      setTimeout(() => {
+                      window.location.reload();
+                      }, 1000);
+                    } else {
+                      setValue({
+                        open: true,
+                        message: "jumlah produk harus lebih dari 0",
+                        status: "error",
+                      });
+                    }
                   }}
                 >
                   <AddShoppingCartIcon sx={{ mr: 1 }} /> Tambah Keranjang
@@ -156,9 +176,9 @@ function Product(props) {
       </Grid>
       <Copyright />
       <SnackNotif
-        status="success"
-        message={`${quantity} dus ditambahkan ke keranjang`}
-        open={open}
+        status={value.status}
+        message={value.message}
+        open={value.open}
       />
     </>
   );

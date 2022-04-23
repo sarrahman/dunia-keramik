@@ -26,3 +26,18 @@ export function getCart() {
     return [];
   }
 }
+
+export function deleteCart(id) {
+  // eslint-disable-next-line eqeqeq
+  const cartData = getCart().filter((a) => a.product._id != id);
+  localStorage.setItem(localStorageKey, JSON.stringify(cartData));
+}
+
+export function updateCart(id, quantity) {
+  const data = getCart().find((item) => item.product._id === id);
+  data.quantity = quantity;
+  // eslint-disable-next-line eqeqeq
+  const cartData = getCart().filter((a) => a.product._id != id);
+  cartData.unshift(data);
+  localStorage.setItem(localStorageKey, JSON.stringify(cartData));
+}

@@ -5,6 +5,7 @@ import FilterButton from "../components/filterButton";
 import TextSearch from "../components/textSearch";
 import ListProduct from "../layouts/listProduct";
 import { connect } from "react-redux";
+import loading from "../assets/loading.json";
 import noData from "../assets/no-data.json";
 import {
   getProductByTekstur,
@@ -22,6 +23,8 @@ function Products(props) {
   const [ukuran, setUkuran] = useState("");
   const [kategori, setKategori] = useState("");
   const [filter, setFilter] = useSearchParams();
+  const url = window.location.href;
+  const [anime, setAnime] = useState(loading);
 
   useEffect(() => {
     setTekstur(filter.get("tekstur"));
@@ -42,13 +45,17 @@ function Products(props) {
         .getProductByKategori(kategori)
         .then((res) => setProduct(res.data))
         .catch((err) => console.log(err));
-    } else {
+    } else if (!url.includes("?")) {
       props
         .getProducts()
         .then((res) => setProduct(res.data))
         .catch((err) => console.log(err));
+    } else {
+      setTimeout(() => {
+        setAnime(noData);
+      }, 5000);
     }
-  }, [filter, kategori, props, tekstur, ukuran]);
+  }, [filter, kategori, props, tekstur, ukuran, url]);
 
   return (
     <>
@@ -87,10 +94,9 @@ function Products(props) {
           <ListProduct data={product} />
         ) : (
           <Box sx={{ textAlign: "center" }}>
-            <h3>Barang Belum Ada</h3>
             <Lottie
               loop
-              animationData={noData}
+              animationData={anime}
               play
               style={{ width: "100%", height: "300px" }}
             />

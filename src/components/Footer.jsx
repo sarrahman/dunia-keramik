@@ -27,14 +27,20 @@ function Copyright(props) {
             mb: 3,
           }}
         >
-          <IconButton sx={{ color: "primary.main" }}>
-            <InstagramIcon
-              sx={{
-                color: "secondary.main",
-                mr: 1,
-              }}
-            />
-          </IconButton>
+          <a
+            href="https://www.instagram.com/tokoduniakeramik"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconButton sx={{ color: "primary.main" }}>
+              <InstagramIcon
+                sx={{
+                  color: "secondary.main",
+                  mr: 1,
+                }}
+              />
+            </IconButton>
+          </a>
           <a
             href="https://www.facebook.com/tokoduniakeramik"
             target="_blank"

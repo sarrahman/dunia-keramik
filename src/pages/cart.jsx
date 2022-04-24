@@ -74,15 +74,19 @@ export default function Cart() {
         }}
       >
         {cart.length > 0 ? (
-          <Button
-            sx={{
-              width: "50%",
+          <a
+            style={{
+              textDecoration: "none",
             }}
-            variant="contained"
-            color="primary"
+            href={`https://api.whatsapp.com/send?phone=6281249363040&text=Pesanan%20Barang%20%3A%20%0A${cart.map(
+              (item, index) =>
+                `${index + 1}.${item.product.kategori} ${item.product.ukuran} ${item.product.name}%20%3D%3E%20${item.quantity}%20dus%0A`
+            )}`}
           >
-            Pesan
-          </Button>
+            <Button variant="contained" color="secondary">
+              Pesan
+            </Button>
+          </a>
         ) : (
           <Button
             sx={{

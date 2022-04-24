@@ -153,7 +153,7 @@ function Product(props) {
                         status: "success",
                       });
                       setTimeout(() => {
-                      window.location.reload();
+                        window.location.reload();
                       }, 1000);
                     } else {
                       setValue({
@@ -166,9 +166,16 @@ function Product(props) {
                 >
                   <AddShoppingCartIcon sx={{ mr: 1 }} /> Tambah Keranjang
                 </Button>
-                <Button variant="contained" color="secondary">
+                <a
+                  style={{
+                    textDecoration: "none",
+                  }}
+                  href={`https://api.whatsapp.com/send?phone=6281249363040&text=Hallo admin, saya ingin menanyakan *${product.kategori} ${product.name}* ukuran ${product.ukuran}`}
+                >
+                  <Button variant="contained" color="secondary">
                   <WhatsAppIcon sx={{ mr: 1 }} /> Chat Whatsapp
-                </Button>
+                  </Button>
+                </a>
               </Box>
             </Box>
           </Box>

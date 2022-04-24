@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import AppBarComp from "../components/AppBar";
 import Copyright from "../components/Footer";
 import FilterButton from "../components/filterButton";
-import TextSearch from "../components/textSearch";
 import ListProduct from "../layouts/listProduct";
 import { connect } from "react-redux";
 import loading from "../assets/loading.json";
@@ -49,7 +48,7 @@ function Products(props) {
       props
         .getProducts()
         .then((res) => setProduct(res.data))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
     } else {
       setTimeout(() => {
         setAnime(noData);
@@ -60,7 +59,6 @@ function Products(props) {
   return (
     <>
       <AppBarComp />
-      <TextSearch />
       <Box
         sx={{
           display: "flex",

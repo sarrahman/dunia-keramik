@@ -3,14 +3,12 @@ import { Box, Button } from "@mui/material";
 import ImageButtonComp from "../components/ImageButton";
 import Copyright from "../components/Footer";
 import {useNavigate} from "react-router-dom";
-import TextSearch from "../components/textSearch";
 
 export default function Home() {
   const navigate = useNavigate();
   return (
     <>
       <AppBarComp />
-     <TextSearch />
       <Box
         sx={{
           display: "flex",

@@ -131,6 +131,7 @@ function Product(props) {
                     width: "4.5rem",
                   }}
                   size="small"
+                  type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                 />

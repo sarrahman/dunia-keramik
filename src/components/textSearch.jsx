@@ -73,6 +73,7 @@ export default function TextSearch(props) {
           maxLength={512}
           type="search"
           onChange={(event) => setInputValue(event.currentTarget.value)}
+          {...props}
         />
       </Box>
   );

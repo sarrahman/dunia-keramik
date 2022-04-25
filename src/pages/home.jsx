@@ -3,12 +3,14 @@ import { Box, Button } from "@mui/material";
 import ImageButtonComp from "../components/ImageButton";
 import Copyright from "../components/Footer";
 import {useNavigate} from "react-router-dom";
+import TextSearch from "../components/textSearch";
 
 export default function Home() {
   const navigate = useNavigate();
   return (
     <>
       <AppBarComp />
+      <TextSearch onClick={() => navigate('/pencarian')} />
       <Box
         sx={{
           display: "flex",
@@ -24,7 +26,7 @@ export default function Home() {
         justifyContent: "center",
         mb: 3,
       }}>
-      <Button onClick={() => navigate('/products')} variant="outlined" color="secondary">Semua Products</Button>
+      <Button onClick={() => navigate('/products')} variant="outlined" color="secondary">Semua Product</Button>
       </Box>
         <Copyright />
     </>

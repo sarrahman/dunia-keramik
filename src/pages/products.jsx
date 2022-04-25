@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import AppBarComp from "../components/AppBar";
 import Copyright from "../components/Footer";
 import FilterButton from "../components/filterButton";
@@ -23,6 +23,7 @@ function Products(props) {
   const [kategori, setKategori] = useState("");
   const [filter, setFilter] = useSearchParams();
   const url = window.location.href;
+  const [message, setMessage] = useState("Loading...");
   const [anime, setAnime] = useState(loading);
 
   useEffect(() => {
@@ -52,7 +53,8 @@ function Products(props) {
     } else {
       setTimeout(() => {
         setAnime(noData);
-      }, 5000);
+        setMessage("Keramik Tidak Ditemukan");
+      }, 15000);
     }
   }, [filter, kategori, props, tekstur, ukuran, url]);
 
@@ -79,7 +81,7 @@ function Products(props) {
           <FilterButton
             value={(value) => setFilter({ tekstur: value })}
             nama="tekstur"
-            data={["glossy", "wood", "batu"]}
+            data={["glossy", "wood", "stone", "deco", "matte"]}
           />
         </Box>
       </Box>
@@ -92,6 +94,7 @@ function Products(props) {
           <ListProduct data={product} />
         ) : (
           <Box sx={{ textAlign: "center" }}>
+            <Typography variant="h6">{message}</Typography>
             <Lottie
               loop
               animationData={anime}

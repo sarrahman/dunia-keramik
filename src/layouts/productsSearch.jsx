@@ -1,7 +1,7 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useHits } from 'react-instantsearch-hooks';
 import Lottie from "react-lottie-player/dist/LottiePlayerLight";
-import noData from '../assets/no-data.json';
+import noData from '../assets/no-search-result.json';
 import CardProduct from '../components/CardProduct';
 
 export function ProductsSearch() {
@@ -9,12 +9,17 @@ export function ProductsSearch() {
 
   if (hits.length === 0) {
     return (
+      <>
+      <Typography variant="h6" sx={{ textAlign: "center" }}>
+        Hasil Pencarian Tidak Ditemukan
+      </Typography>
       <Lottie
         loop
         animationData={noData}
         play
         style={{ width: "100%", height: "300px" }}
       />
+      </>
     );
   }
 

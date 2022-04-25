@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Grid,
   IconButton,
   List,
   ListItem,
@@ -44,28 +43,32 @@ function Product(props) {
   return (
     <>
       <AppBarComp />
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+      <Box
+        sx={{
+          display: "flex",
+          mt: 2,
+          flexDirection: { xs: "column", md: "row" },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <ProductImage name={product.name} image={product.image} />
+        </Box>
+        <Box sx={{
+          width: "100%",
+        }}>
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
-              height: { xs: "50vh", md: "75vh" },
-            }}
-          >
-            <ProductImage name={product.name} image={product.image} />
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: { xs: "50vh", md: "75vh" },
             }}
           >
             <Box
@@ -141,7 +144,7 @@ function Product(props) {
               </Box>
               <Box
                 sx={{
-                  mt: { xs: 2, md: 1 },
+                  mt: 2,
                   display: "flex",
                   flexDirection: { xs: "column", md: "row" },
                 }}
@@ -184,8 +187,8 @@ function Product(props) {
               </Box>
             </Box>
           </Box>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
       <Copyright />
       <SnackNotif
         status={value.status}

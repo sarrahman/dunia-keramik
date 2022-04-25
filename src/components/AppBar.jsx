@@ -54,7 +54,9 @@ export default function AppBarComp() {
           />
 
          </Box>
-          <Box>
+          <Box sx={{
+            display: "flex",
+          }}>
             <IconButton sx={{
               mr: 2,
             }}

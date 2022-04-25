@@ -12,6 +12,7 @@ function Copyright(props) {
         width: "95%",
         color: "#fff",
         p: { xs: 2, md: 4 },
+        mt: { xs: 2, md: 0},
       }}
     >
       <Box

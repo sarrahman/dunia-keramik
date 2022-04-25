@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  TextField,
   Typography,
 } from "@mui/material";
 import AppBarComp from "../components/AppBar";
@@ -98,6 +99,11 @@ function Product(props) {
                 <ListItem disablePadding>
                   <ListItemText primary={`tekstur : ${product.tekstur}`} />
                 </ListItem>
+                <ListItem disablePadding>
+                  <ListItemText
+                    primary={`Penggunaan : ${product.penggunaan}`}
+                  />
+                </ListItem>
               </List>
               <Box
                 sx={{
@@ -110,22 +116,6 @@ function Product(props) {
               >
                 <IconButton
                   onClick={() => {
-                    setQuantity(quantity + 1);
-                  }}
-                >
-                  <AddIcon color="secondary" />
-                </IconButton>
-                <IconButton>
-                  <Typography
-                    sx={{
-                      fontSize: "1.3rem",
-                    }}
-                  >
-                    {quantity}
-                  </Typography>
-                </IconButton>
-                <IconButton
-                  onClick={() => {
                     if (quantity > 0) {
                       setQuantity(quantity - 1);
                     }
@@ -133,9 +123,25 @@ function Product(props) {
                 >
                   <RemoveIcon color="secondary" />
                 </IconButton>
+                <TextField
+                  sx={{
+                    width: "4.5rem",
+                  }}
+                  size="small"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+                <IconButton
+                  onClick={() => {
+                    setQuantity(quantity + 1);
+                  }}
+                >
+                  <AddIcon color="secondary" />
+                </IconButton>
               </Box>
               <Box
                 sx={{
+                  mt: { xs: 2, md: 1 },
                   display: "flex",
                   flexDirection: { xs: "column", md: "row" },
                 }}
@@ -166,16 +172,15 @@ function Product(props) {
                 >
                   <AddShoppingCartIcon sx={{ mr: 1 }} /> Tambah Keranjang
                 </Button>
-                <a
-                  style={{
-                    textDecoration: "none",
+                <Button
+                  onClick={() => {
+                    window.location.href = `https://api.whatsapp.com/send?phone=6281249363040&text=Hallo admin, saya ingin menanyakan *${product.kategori} ${product.name}* ukuran ${product.ukuran}`;
                   }}
-                  href={`https://api.whatsapp.com/send?phone=6281249363040&text=Hallo admin, saya ingin menanyakan *${product.kategori} ${product.name}* ukuran ${product.ukuran}`}
+                  variant="contained"
+                  color="secondary"
                 >
-                  <Button variant="contained" color="secondary">
                   <WhatsAppIcon sx={{ mr: 1 }} /> Chat Whatsapp
-                  </Button>
-                </a>
+                </Button>
               </Box>
             </Box>
           </Box>

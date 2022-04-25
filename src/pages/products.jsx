@@ -49,7 +49,7 @@ function Products(props) {
       props
         .getProducts()
         .then((res) => setProduct(res.data))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
     } else {
       setTimeout(() => {
         setAnime(noData);
@@ -91,7 +91,16 @@ function Products(props) {
         }}
       >
         {product.length > 0 ? (
-          <ListProduct data={product} />
+          <>
+            {url.includes("?") ? (
+              <Typography sx={{
+                textAlign: "center",
+                p: 2,
+                fontSize: { xs: "12px", md: "15px" },
+              }}>Produk di filter berdasarkan <b>{filter.toString()}</b></Typography>
+            ) : null}
+            <ListProduct data={product} />
+          </>
         ) : (
           <Box sx={{ textAlign: "center" }}>
             <Typography variant="h6">{message}</Typography>

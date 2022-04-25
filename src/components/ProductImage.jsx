@@ -13,6 +13,9 @@ export default function ProductImage(props) {
     >
       <CardActionArea>
         <CardMedia
+          sx={{
+            objectFit: "contain",
+          }}
           component="img"
           height="300"
           image={props.image}

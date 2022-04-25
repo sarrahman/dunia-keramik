@@ -52,7 +52,7 @@ export default function TextSearch(props) {
         onReset={handleReset}
       >
         <TextField
-          label="Pencarian"
+          label="Pencarian..."
           sx={{
             width: "80%",
           }}

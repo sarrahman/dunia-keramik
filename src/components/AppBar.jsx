@@ -5,6 +5,7 @@ import {
   Box,
   CardMedia,
   IconButton,
+  Link,
   Menu,
   MenuItem,
   Toolbar,
@@ -96,12 +97,29 @@ export default function AppBarComp() {
               </Menu>
             </Box>
             <CardMedia
-              sx={{ cursor: "pointer", width: 160 }}
+              sx={{ cursor: "pointer", width: 160, mr: 2 }}
               component="img"
               onClick={() => navigate("/")}
               src="https://ik.imagekit.io/duniakeramik/Dunia_Keramik__2_-removebg-preview_TJiuJARjl.png"
               alt="logo"
             />
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {pages.map((page) => (
+                <Link
+                  href="#"
+                  variant="body1"
+                  sx={{ mr: 3, textDecoration: "none", color: "inherit" }}
+                >
+                  {page}
+                </Link>
+              ))}
+            </Box>
           </Box>
           <Box
             sx={{

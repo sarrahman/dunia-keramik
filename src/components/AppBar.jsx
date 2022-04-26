@@ -5,7 +5,6 @@ import {
   Box,
   CardMedia,
   IconButton,
-  Link,
   Menu,
   MenuItem,
   Toolbar,
@@ -111,13 +110,21 @@ export default function AppBarComp() {
               }}
             >
               {pages.map((page) => (
-                <Link
-                  href="#"
+                <Typography
                   variant="body1"
-                  sx={{ mr: 3, textDecoration: "none", color: "inherit" }}
+                  sx={{ mr: 3, color: "inherit", cursor: "pointer" }}
+                  onClick={() => {
+                    if (page === "Kalkulator") {
+                      navigate("/kalkulator");
+                    } else if (page === "Produk") {
+                      navigate("/products");
+                    } else if (page === "Home") {
+                      navigate("/");
+                    }
+                  }}
                 >
                   {page}
-                </Link>
+                </Typography>
               ))}
             </Box>
           </Box>

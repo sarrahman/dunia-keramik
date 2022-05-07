@@ -14,6 +14,7 @@ const FooterLink = (props) => {
       <Typography
         variant="h6"
         sx={{
+          color: 'secondary.main',
           fontWeight: 600,
           mb: 1,
         }}
@@ -27,10 +28,12 @@ const FooterLink = (props) => {
               navigate("/products");
             } else if (item === "Kemitraan") {
               window.open("https://mitra.duniakeramik.com");
+            }else{
+              navigate(`/${item}`)
             }
           }}
           variant="body1"
-          sx={{ color: "#fff", mr: 3, textDecoration: "none", mb: 1 }}
+          sx={{ color: "#fff", mr: 3, textDecoration: "none", mb: 1, cursor: 'pointer' }}
         >
           {item}
         </Typography>

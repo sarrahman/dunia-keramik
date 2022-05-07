@@ -1,9 +1,9 @@
 import AppBarComp from "../components/AppBar";
 import { Box, Button } from "@mui/material";
 import ImageButtonComp from "../components/ImageButton";
-import Copyright from "../components/Footer";
 import {useNavigate} from "react-router-dom";
 import TextSearch from "../components/textSearch";
+import Footer from "../components/organisms/footer";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function Home() {
       }}>
       <Button onClick={() => navigate('/products')} variant="outlined" color="secondary">Semua Product</Button>
       </Box>
-        <Copyright />
+        <Footer />
     </>
   );
 }

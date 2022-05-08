@@ -26,7 +26,7 @@ const FooterLink = (props) => {
           onClick={() => {
             if (item === "Semua Product") {
               navigate("/products");
-            } else if (item === "Kemitraan") {
+            } else if (item === "kemitraan") {
               window.open("https://mitra.duniakeramik.com");
             }else{
               navigate(`/${item}`)

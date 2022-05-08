@@ -6,10 +6,10 @@ import {
   ListItem,
   ListItemText,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import AppBarComp from "../components/AppBar";
-import Copyright from "../components/Footer";
+import Footer from "../components/organisms/footer";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ProductImage from "../components/ProductImage";
@@ -30,7 +30,7 @@ function Product(props) {
   const [value, setValue] = useState({
     open: false,
     message: "",
-    status: "success",
+    status: "success"
   });
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function Product(props) {
         sx={{
           display: "flex",
           mt: 2,
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", md: "row" }
         }}
       >
         <Box
@@ -55,27 +55,29 @@ function Product(props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            width: "100%",
+            width: "100%"
           }}
         >
           <ProductImage name={product.name} image={product.image} />
         </Box>
-        <Box sx={{
-          width: "100%",
-        }}>
+        <Box
+          sx={{
+            width: "100%"
+          }}
+        >
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              width: "100%",
+              width: "100%"
             }}
           >
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                p: { xs: 2, md: 5 },
+                p: { xs: 2, md: 5 }
               }}
             >
               <Typography
@@ -114,7 +116,7 @@ function Product(props) {
                   alignItems: "center",
                   pl: 1,
                   pb: 1,
-                  justifyContent: { xs: "center", md: "left" },
+                  justifyContent: { xs: "center", md: "left" }
                 }}
               >
                 <IconButton
@@ -128,7 +130,7 @@ function Product(props) {
                 </IconButton>
                 <TextField
                   sx={{
-                    width: "4.5rem",
+                    width: "4.5rem"
                   }}
                   size="small"
                   type="number"
@@ -147,7 +149,7 @@ function Product(props) {
                 sx={{
                   mt: 2,
                   display: "flex",
-                  flexDirection: { xs: "column", md: "row" },
+                  flexDirection: { xs: "column", md: "row" }
                 }}
               >
                 <Button
@@ -160,7 +162,7 @@ function Product(props) {
                       setValue({
                         open: true,
                         message: "Produk berhasil ditambahkan ke keranjang",
-                        status: "success",
+                        status: "success"
                       });
                       setTimeout(() => {
                         window.location.reload();
@@ -169,7 +171,7 @@ function Product(props) {
                       setValue({
                         open: true,
                         message: "jumlah produk harus lebih dari 0",
-                        status: "error",
+                        status: "error"
                       });
                     }
                   }}
@@ -190,7 +192,7 @@ function Product(props) {
           </Box>
         </Box>
       </Box>
-      <Copyright />
+      <Footer />
       <SnackNotif
         status={value.status}
         message={value.message}
@@ -201,11 +203,11 @@ function Product(props) {
 }
 
 const reduxState = (state) => ({
-  isLoading: state.isLoading,
+  isLoading: state.isLoading
 });
 
 const reduxActions = (dispatch) => ({
-  getProduct: (id) => dispatch(getProduct(id)),
+  getProduct: (id) => dispatch(getProduct(id))
 });
 
 export default connect(reduxState, reduxActions)(Product);

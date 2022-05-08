@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import AppBarComp from "../components/AppBar";
-import Copyright from "../components/Footer";
+import Footer from "../components/organisms/footer";
 import FilterButton from "../components/filterButton";
 import ListProduct from "../layouts/listProduct";
 import { connect } from "react-redux";
@@ -10,7 +10,7 @@ import {
   getProductByTekstur,
   getProductByUkuran,
   getProducts,
-  getProductsbyKategori,
+  getProductsbyKategori
 } from "../configs/actions";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -64,13 +64,13 @@ function Products(props) {
       <Box
         sx={{
           display: "flex",
-          justifyContent: { xs: "center", md: "left" },
+          justifyContent: { xs: "center", md: "left" }
         }}
       >
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "row"
           }}
         >
           <FilterButton
@@ -87,17 +87,21 @@ function Products(props) {
       </Box>
       <Box
         sx={{
-          p: 2,
+          p: 2
         }}
       >
         {product.length > 0 ? (
           <>
             {url.includes("?") ? (
-              <Typography sx={{
-                textAlign: "center",
-                p: 2,
-                fontSize: { xs: "12px", md: "15px" },
-              }}>Produk di filter berdasarkan <b>{filter.toString()}</b></Typography>
+              <Typography
+                sx={{
+                  textAlign: "center",
+                  p: 2,
+                  fontSize: { xs: "12px", md: "15px" }
+                }}
+              >
+                Produk di filter berdasarkan <b>{filter.toString()}</b>
+              </Typography>
             ) : null}
             <ListProduct data={product} />
           </>
@@ -113,20 +117,20 @@ function Products(props) {
           </Box>
         )}
       </Box>
-      <Copyright />
+      <Footer />
     </>
   );
 }
 
 const reduxState = (state) => ({
-  isLoading: state.isLoading,
+  isLoading: state.isLoading
 });
 
 const reduxActions = (dispatch) => ({
   getProducts: () => dispatch(getProducts()),
   getProductByTekstur: (tekstur) => dispatch(getProductByTekstur(tekstur)),
   getProductByUkuran: (ukuran) => dispatch(getProductByUkuran(ukuran)),
-  getProductByKategori: (kategori) => dispatch(getProductsbyKategori(kategori)),
+  getProductByKategori: (kategori) => dispatch(getProductsbyKategori(kategori))
 });
 
 export default connect(reduxState, reduxActions)(Products);

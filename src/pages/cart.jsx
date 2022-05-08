@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import AppBarComp from "../components/AppBar";
-import Copyright from "../components/Footer";
+import Footer from "../components/organisms/footer";
 import ProductCart from "../components/productCart";
 import { getCart } from "../utils/cart";
 import Lottie from "react-lottie-player/dist/LottiePlayerLight";
@@ -56,7 +56,7 @@ export default function Cart() {
           display: "flex",
           justifyContent: "space-between",
           p: 1,
-          backgroundColor: "background.main",
+          backgroundColor: "background.main"
         }}
       >
         <Typography sx={{ p: 2 }} variant="h6">
@@ -70,17 +70,19 @@ export default function Cart() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          mt: 2,
+          mt: 2
         }}
       >
         {cart.length > 0 ? (
           <a
             style={{
-              textDecoration: "none",
+              textDecoration: "none"
             }}
             href={`https://api.whatsapp.com/send?phone=6281249363040&text=Pesanan%20Barang%20%3A%20%0A${cart.map(
               (item, index) =>
-                `${index + 1}.${item.product.kategori} ${item.product.ukuran} ${item.product.name}%20%3D%3E%20${item.quantity}%20dus%0A`
+                `${index + 1}.${item.product.kategori} ${item.product.ukuran} ${
+                  item.product.name
+                }%20%3D%3E%20${item.quantity}%20dus%0A`
             )}`}
           >
             <Button variant="contained" color="secondary">
@@ -90,7 +92,7 @@ export default function Cart() {
         ) : (
           <Button
             sx={{
-              width: "50%",
+              width: "50%"
             }}
             variant="contained"
             color="primary"
@@ -100,7 +102,7 @@ export default function Cart() {
           </Button>
         )}
       </Box>
-      <Copyright />
+      <Footer />
     </>
   );
 }

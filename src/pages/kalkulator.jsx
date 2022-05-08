@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
 import AppBarComp from "../components/AppBar";
-import Copyright from "../components/Footer";
+import Footer from "../components/organisms/footer";
 import FormCalculator from "../layouts/formKalkulator";
 import CalculatorDetail from "../layouts/kalkulatorResult";
 
@@ -11,7 +11,7 @@ const Kalkulator = (props) => {
     diameter: "",
     ukuran: "",
     pcs: "",
-    diameterPerDus: "",
+    diameterPerDus: ""
   });
 
   const handleCalculate = (data) => {
@@ -28,7 +28,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 16,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "20 x 40":
@@ -38,7 +38,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 12,
-            diameterPerDus: 0.96,
+            diameterPerDus: 0.96
           });
           break;
         case "25 x 40":
@@ -48,7 +48,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 10,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "25 x 50":
@@ -58,7 +58,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 8,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "30 x 30":
@@ -68,7 +68,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 11,
-            diameterPerDus: 0.99,
+            diameterPerDus: 0.99
           });
           break;
         case "40 x 40":
@@ -78,7 +78,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 6,
-            diameterPerDus: 0.96,
+            diameterPerDus: 0.96
           });
           break;
         case "50 x 50":
@@ -88,7 +88,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 4,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "60 x 60":
@@ -98,7 +98,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 4,
-            diameterPerDus: 1.44,
+            diameterPerDus: 1.44
           });
           break;
         case "30 x 60":
@@ -108,7 +108,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 6,
-            diameterPerDus: 1.08,
+            diameterPerDus: 1.08
           });
           break;
         default:
@@ -118,7 +118,7 @@ const Kalkulator = (props) => {
             diameter: (panjang * lebar).toFixed(2),
             ukuran: ukuran,
             pcs: 0,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
       }
@@ -131,7 +131,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 16,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "20 x 40":
@@ -143,7 +143,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 12,
-            diameterPerDus: 0.96,
+            diameterPerDus: 0.96
           });
           break;
         case "25 x 40":
@@ -153,7 +153,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 10,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "25 x 50":
@@ -163,7 +163,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 8,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "30 x 30":
@@ -175,7 +175,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 11,
-            diameterPerDus: 0.99,
+            diameterPerDus: 0.99
           });
           break;
         case "40 x 40":
@@ -187,7 +187,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 6,
-            diameterPerDus: 0.96,
+            diameterPerDus: 0.96
           });
           break;
         case "50 x 50":
@@ -197,7 +197,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 4,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
         case "60 x 60":
@@ -209,7 +209,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 4,
-            diameterPerDus: 1.44,
+            diameterPerDus: 1.44
           });
           break;
         case "30 x 60":
@@ -221,7 +221,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 6,
-            diameterPerDus: 1.08,
+            diameterPerDus: 1.08
           });
           break;
         default:
@@ -231,7 +231,7 @@ const Kalkulator = (props) => {
             diameter: ((panjang + panjang + lebar + lebar) * tinggi).toFixed(2),
             ukuran: ukuran,
             pcs: 0,
-            diameterPerDus: 1,
+            diameterPerDus: 1
           });
           break;
       }
@@ -246,7 +246,7 @@ const Kalkulator = (props) => {
           m: { xs: 1, md: 3 },
           boxShadow: 4,
           p: { xs: 2, md: 3 },
-          borderRadius: 5,
+          borderRadius: 5
         }}
       >
         <FormCalculator
@@ -259,7 +259,7 @@ const Kalkulator = (props) => {
           m: { xs: 1, md: 3 },
           boxShadow: 4,
           p: { xs: 2, md: 3 },
-          borderRadius: 5,
+          borderRadius: 5
         }}
       >
         <CalculatorDetail
@@ -270,7 +270,7 @@ const Kalkulator = (props) => {
           diameterPerDus={value.diameterPerDus}
         />
       </Box>
-      <Copyright />
+      <Footer />
     </div>
   );
 };

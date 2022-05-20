@@ -33,7 +33,7 @@ const FooterLink = (props) => {
             }
           }}
           variant="body1"
-          sx={{ color: "#fff", mr: 3, textDecoration: "none", mb: 1, cursor: 'pointer' }}
+          sx={{ color: "#111", mr: 3, textDecoration: "none", mb: 1, cursor: 'pointer' }}
         >
           {item}
         </Typography>
